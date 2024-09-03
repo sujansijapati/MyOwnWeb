@@ -111,7 +111,7 @@
             }
         </style>
 
-        
+
      <link rel="shortcut icon" href="./img/icon/logo.ico" type="image/x-icon">
     
 
@@ -145,27 +145,6 @@
 
     <!-- Modernizr JS File -->
     <script src="js/modernizr.custom.js"></script>
-
-    <script>
-        // Function to display the popup and refresh the page
-        function showPopup() {
-            var popup = document.getElementById("successPopup");
-            popup.classList.add("show");
-
-            setTimeout(function() {
-                popup.classList.remove("show");
-                document.querySelector(".contactform").reset(); // Clear the form fields
-                // You can uncomment the line below to refresh the page instead of clearing the form fields
-                // location.reload();
-            }, 2000); // Popup is shown for 2 seconds
-        }
-
-        // Prevent actual form submission for demo purposes
-        function handleFormSubmit(event) {
-            event.preventDefault(); // Prevent form submission
-            showPopup(); // Show the success popup
-        }
-    </script>
 
 </head>
 
@@ -326,7 +305,7 @@
                 </div>
 
                 <div class="submit">
-                    <button type="submit">Submit</button>
+                    <button type="submit" onclick="setTimeout(function() { location.reload(); }, 2000);">Submit</button>
                 </div>
             </div>
         </form>
@@ -336,6 +315,31 @@
     </div>
 
 </section>
+
+<script>
+    function submitForm() {
+        var form = document.querySelector('.contactform');
+        var actionUrl = form.action;
+        var formData = new FormData(form);
+
+        fetch(actionUrl, {
+            method: 'POST',
+            body: formData
+        })
+        .then(response => {
+            if (response.ok) {
+                alert('Message sent successfully!');
+                location.reload(); // Refresh the page after submission
+            } else {
+                alert('Message sending failed!');
+            }
+        })
+        .catch(error => {
+            alert('An error occurred: ' + error.message);
+        });
+    }
+</script>
+
 <!-- Template JS Files -->
 <script src="js/jquery-3.5.0.min.js"></script>
 <script src="js/styleswitcher.js"></script>
