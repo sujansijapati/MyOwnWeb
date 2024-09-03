@@ -316,30 +316,8 @@
                         document.getElementById('messageContainer').style.color = 'red';
                         return false;
                     }
-        
-                    var formData = new FormData(form);
-                    fetch(form.action, {
-                        method: 'POST',
-                        body: formData
-                    })
-                    .then(response => {
-                        if (response.ok) {
-                            alert('Message Sent Successfully');
-                            setTimeout(function() {
-                                location.reload();
-                            }, 2000);
-                        } else {
-                            document.getElementById('messageContainer').textContent = 'Message sending failed!';
-                            document.getElementById('messageContainer').style.color = 'red';
-                        }
-                    })
-                    .catch(error => {
-                        document.getElementById('messageContainer').textContent = 'An error occurred: ' + error.message;
-                        document.getElementById('messageContainer').style.color = 'red';
-                    });
-        
-                    return false;
-                ">Submit</button>
+                    setTimeout(function() { location.reload(); }, 2000);"
+                >Submit</button>
                    
                 </div>
             </div>
