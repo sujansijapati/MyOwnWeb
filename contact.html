@@ -8,59 +8,85 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
 
-      <!-- Internal CSS for the form -->
-      <style>
-        /* Form Container */
-        .form-content {
-            background-color: #f7f7f7;
-            padding: 30px;
-            border-radius: 8px;
-            box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.2);
-            max-width: 600px;
-            margin: 0 auto;
-        }
-
-        h1 {
-            text-align: center;
-            color: #333;
-            margin-bottom: 20px;
-            font-family: 'Poppins', sans-serif;
-        }
-
-        .form-content .name, .form-content .email, .form-content .msg {
-            margin-bottom: 15px;
-        }
-
-        input[type="text"], input[type="email"] {
+    <style>
+        /* Form */
+        .contact .contactform input[type=text],
+        .contact .contactform input[type=email] {
+            border: 1px solid #111;
             width: 100%;
-            padding: 12px;
-            border: 1px solid #ccc;
-            border-radius: 4px;
-            font-size: 16px;
-            font-family: 'Open Sans', sans-serif;
-            transition: border-color 0.3s ease;
-        }
-
-        input[type="text"]:focus, input[type="email"]:focus {
-            border-color: #007bff;
-            outline: none;
-        }
-
-        .submit button {
-            width: 100%;
-            padding: 12px;
-            background-color: #007bff;
-            border: none;
-            border-radius: 4px;
+            background: #252525;
             color: #fff;
+            padding: 11px 26px;
+            margin-bottom: 30px;
+            border-radius: 30px;
+            outline: none !important;
+            transition: .3s;
+        }
+
+        .contact .contactform textarea {
+            border: 1px solid #111;
+            background: #252525;
+            color: #fff;
+            width: 100%;
+            padding: 12px 26px;
+            margin-bottom: 20px;
+            height: 160px;
+            overflow: hidden;
+            border-radius: 30px;
+            outline: none !important;
+            transition: .3s;
+            resize: vertical; /* Allows resizing (vertical only) */
+            max-height: 300px; /* Max height for the textarea */
+            min-height: 80px;  /* Min height for the textarea */
+        }
+
+        .contact .contactform .form-message {
+            margin: 24px 0;
+        }
+
+        .contact .contactform .output_message {
+            display: block;
+            color: #fff;
+            height: 46px;
+            line-height: 46px;
+            border-radius: 30px;
+        }
+
+        .contact .contactform .output_message.success {
+            background: #28a745;
+        }
+
+        .contact .contactform .output_message.success:before {
+            font-family: FontAwesome;
+            content: "\f14a";
+            padding-right: 10px;
+        }
+
+        .contact .contactform .output_message.error {
+            background: #dc3545;
+        }
+
+        .contact .contactform .output_message.error:before {
+            font-family: FontAwesome;
+            content: "\f071";
+            padding-right: 10px;
+        }
+
+        .contact .contactform button {
+            width: 100%;
+            padding: 12px;
+            background-color: #ffcc00; /* Yellow Button */
+            border: none;
+            border-radius: 30px;
+            color: #333;
             font-size: 18px;
             cursor: pointer;
             font-family: 'Poppins', sans-serif;
             transition: background-color 0.3s ease;
         }
 
-        .submit button:hover {
-            background-color: #0056b3;
+        .contact .contactform button:hover {
+            background-color: #e6b800;
         }
     </style>
 
@@ -238,25 +264,24 @@
             <!-- Left Side Ends -->
             <!-- Contact Form Starts -->
             <div class="col-12 col-lg-8">
-                <form action="https://api.web3forms.com/submit" method="POST">
+                <form class="contactform" action="https://api.web3forms.com/submit" method="POST">
                     <div class="form-content">
-            
                         <input type="hidden" name="access_key" value="90b38764-9d0f-4674-ae4b-2501b40ecd9f">
-            
+        
                         <h1>Message Me</h1>
-            
+        
                         <div class="name">
                             <input type="text" name="name" placeholder="Your Name" required>
                         </div>
-            
+        
                         <div class="email">
                             <input type="text" name="email" placeholder="Your email" required>
                         </div>
-            
+        
                         <div class="msg">
-                            <input type="text" name="message" placeholder="Your Message" >
+                            <textarea name="message" placeholder="Your Message"></textarea>
                         </div>
-            
+        
                         <div class="submit">
                             <button type="submit">Submit</button>
                         </div>
