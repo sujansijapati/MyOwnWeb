@@ -182,27 +182,26 @@
             <!-- Left Side Ends -->
             <!-- Contact Form Starts -->
             <div class="col-12 col-lg-8">
-                <form action="https://api.web3forms.com/submit" method="POST">
-                    <div class="form-content">
-            
-                        <input type="hidden" name="access_key" value="90b38764-9d0f-4674-ae4b-2501b40ecd9f">
-            
-                        <h1>Message Me</h1>
-            
-                        <div class="name">
-                            <input type="text" name="name" placeholder="Your Name" required>
-                        </div>
-            
-                        <div class="email">
-                            <input type="text" name="email" placeholder="Your email">
-                        </div>
-            
-                        <div class="msg">
-                            <input type="text" name="message" placeholder="Your Message" >
-                        </div>
-            
-                        <div class="submit">
-                            <button type="submit">Submit</button>
+                <form action="https://api.web3forms.com/submit" method="POST"></form>>
+                <input type="hidden" name="access_key" value="90b38764-9d0f-4674-ae4b-2501b40ecd9f">
+                    <div class="contactform">
+                        <div class="row">
+                            <div class="col-12 col-md-4">
+                                <input type="text" name="name" placeholder="YOUR NAME">
+                            </div>
+                            <div class="col-12 col-md-4">
+                                <input type="email" name="email" placeholder="YOUR EMAIL">
+                            </div>
+                            <div class="col-12 col-md-4">
+                                <input type="text" name="subject" placeholder="YOUR SUBJECT">
+                            </div>
+                            <div class="col-12">
+                                <textarea name="message" placeholder="YOUR MESSAGE"></textarea>
+                                <button type="submit" class="btn btn-contact">Send Message</button>
+                            </div>
+                            <div class="col-12 form-message">
+                                <span class="output_message text-center font-weight-600 text-uppercase"></span>
+                            </div>
                         </div>
                     </div>
                 </form>
