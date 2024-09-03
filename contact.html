@@ -27,6 +27,114 @@
     <!-- CSS Skin File -->
     <link href="css/skins/yellow.css" rel="stylesheet">
 
+
+
+
+    <!-- Internal CSS for the form -->
+    <style>
+        /* Form */
+        .contact .contactform input[type=text],
+        .contact .contactform input[type=email] {
+            border: 1px solid #111;
+            width: 100%;
+            background: #252525;
+            color: #fff;
+            padding: 11px 26px;
+            margin-bottom: 30px;
+            border-radius: 30px;
+            outline: none !important;
+            transition: .3s;
+        }
+
+        .contact .contactform textarea {
+            border: 1px solid #111;
+            background: #252525;
+            color: #fff;
+            width: 100%;
+            padding: 12px 26px;
+            margin-bottom: 20px;
+            height: 160px;
+            overflow: hidden;
+            border-radius: 30px;
+            outline: none !important;
+            transition: .3s;
+            resize: vertical; /* Allows resizing (vertical only) */
+            max-height: 300px; /* Max height for the textarea */
+            min-height: 80px;  /* Min height for the textarea */
+        }
+
+        .contact .contactform .form-message {
+            margin: 24px 0;
+        }
+
+        .contact .contactform .output_message {
+            display: block;
+            color: #fff;
+            height: 46px;
+            line-height: 46px;
+            border-radius: 30px;
+        }
+
+        .contact .contactform .output_message.success {
+            background: #28a745;
+        }
+
+        .contact .contactform .output_message.success:before {
+            font-family: FontAwesome;
+            content: "\f14a";
+            padding-right: 10px;
+        }
+
+        .contact .contactform .output_message.error {
+            background: #dc3545;
+        }
+
+        .contact .contactform .output_message.error:before {
+            font-family: FontAwesome;
+            content: "\f071";
+            padding-right: 10px;
+        }
+
+        .contact .contactform button {
+            width: 100%;
+            padding: 12px;
+            background-color: #ffcc00; /* Yellow Button */
+            border: none;
+            border-radius: 30px;
+            color: #333;
+            font-size: 18px;
+            cursor: pointer;
+            font-family: 'Poppins', sans-serif;
+            transition: background-color 0.3s ease;
+        }
+
+        .contact .contactform button:hover {
+            background-color: #e6b800;
+        }
+
+        /* Popup */
+        .popup {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+            background-color: #28a745;
+            padding: 20px;
+            border-radius: 10px;
+            color: #fff;
+            font-size: 18px;
+            text-align: center;
+        }
+
+        .popup.show {
+            display: block;
+        }
+    </style>
+
+
+
     <!-- Live Style Switcher - demo only -->
     <link rel="alternate stylesheet" type="text/css" title="blue" href="css/skins/blue.css" />
     <link rel="alternate stylesheet" type="text/css" title="green" href="css/skins/green.css" />
@@ -95,7 +203,7 @@
             <i class="fa fa-home"></i>
             <a href="index.html">
                 <h2>Home</h2>
-            </a>
+            </a> 
         </li>
         <li class="icon-box">
             <i class="fa fa-user"></i>
@@ -180,33 +288,37 @@
                 </ul>
             </div>
             <!-- Left Side Ends -->
-            <!-- Contact Form Starts -->
-            <div class="col-12 col-lg-8">
-                <form class="contactform" method="post" action="http://slimhamdi.net/tunis/dark/php/process-form.php">
-                    <div class="contactform">
-                        <div class="row">
-                            <div class="col-12 col-md-4">
-                                <input type="text" name="name" placeholder="YOUR NAME">
-                            </div>
-                            <div class="col-12 col-md-4">
-                                <input type="email" name="email" placeholder="YOUR EMAIL">
-                            </div>
-                            <div class="col-12 col-md-4">
-                                <input type="text" name="subject" placeholder="YOUR SUBJECT">
-                            </div>
-                            <div class="col-12">
-                                <textarea name="message" placeholder="YOUR MESSAGE"></textarea>
-                                <button type="submit" class="btn btn-contact">Send Message</button>
-                            </div>
-                            <div class="col-12 form-message">
-                                <span class="output_message text-center font-weight-600 text-uppercase"></span>
-                            </div>
-                        </div>
-                    </div>
-                </form>
-               
+
+
+<!-- Form Container Starts -->
+    <div class="col-12 col-lg-8">
+        <form class="contactform" action="https://api.web3forms.com/submit" method="POST" onsubmit="handleFormSubmit(event)">
+            <div class="form-content">
+                <input type="hidden" name="access_key" value="90b38764-9d0f-4674-ae4b-2501b40ecd9f">
+
+                <h1>Message Me</h1>
+
+                <div class="name">
+                    <input type="text" name="name" placeholder="Your Name" required>
+                </div>
+
+                <div class="email">
+                    <input type="text" name="email" placeholder="Your email" required>
+                </div>
+
+                <div class="msg">
+                    <textarea name="message" placeholder="Your Message"></textarea>
+                </div>
+
+                <div class="submit">
+                   <button type="submit" onclick="alert('Message Sent Successfully'); setTimeout(function() { location.reload(); }, 2000);">Submit</button>
+                </div>
             </div>
-            <!-- Contact Form Ends -->
+        </form>
+    </div>
+    <!-- Form Container Ends -->
+
+
         </div>
     </div>
 
