@@ -289,17 +289,31 @@
             </div>
             <!-- Left Side Ends -->
 
-
 <!-- Form Container Starts -->
 <div class="col-12 col-lg-8">
     <form class="contactform" action="https://api.web3forms.com/submit" method="POST" onsubmit="
         var name = this.name.value.trim();
         var email = this.email.value.trim();
         var message = this.message.value.trim();
-        if (name === '' || email === '') {
-            alert('Please fill in all required fields.');
+
+        // Regular Expression for validating email format
+        var emailRegex = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,6}$/;
+
+        if (name === '') {
+            alert('Please fill in your name.');
             return false; // Prevent form submission
         }
+
+        if (!emailRegex.test(email)) {
+            alert('Please enter a valid email address.');
+            return false; // Prevent form submission
+        }
+
+        if (message === '') {
+            alert('Please enter a message.');
+            return false; // Prevent form submission
+        }
+
         alert('Message Sent Successfully');
         setTimeout(function() { location.reload(); }, 2000);
         return true; // Allow form submission
@@ -322,13 +336,12 @@
             </div>
 
             <div class="submit">
-               <button type="submit">Send</button>
+                <button type="submit">Send</button>
             </div>
         </div>
     </form>
 </div>
 <!-- Form Container Ends -->
-
 
 
         </div>
