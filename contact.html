@@ -198,49 +198,10 @@
 
 
 
-            
 
 <!-- Contact Form Starts -->
 <div class="col-12 col-lg-8">
     <form class="contactform" action="https://api.web3forms.com/submit" method="POST" onsubmit="
-        if (!validateForm()) {
-            return false; // Prevent form submission if validation fails
-        }
-        alert('🎉Thank you for reaching out! 📩 Your message has been received, and I\'ll get back to you as soon as possible.😊');
-        setTimeout(function() {
-            window.location.reload(); // Reloads the page after a short delay
-        }, 100); 
-        return false; // Prevent form submission
-    ">
-
-        <div class="contactform">
-            <input type="hidden" name="access_key" value="90b38764-9d0f-4674-ae4b-2501b40ecd9f">
-            <div class="row">
-                <div class="col-12 col-md-4">
-                    <input type="text" id="name" name="name" placeholder="YOUR NAME" required oninput="validateForm()">
-                    <small id="name_error" class="text-danger"></small> <!-- Error message for name -->
-                </div>
-                <div class="col-12 col-md-4">
-                    <input type="email" id="email" name="email" placeholder="YOUR EMAIL" required oninput="validateForm()">
-                    <small id="email_error" class="text-danger"></small> <!-- Error message for email -->
-                </div>
-                <div class="col-12 col-md-4">
-                    <input type="text" id="contact" name="contact" placeholder="YOUR CONTACT NUMBER" required oninput="validateForm()">
-                    <small id="contact_error" class="text-danger"></small> <!-- Error message for contact -->
-                </div>
-                <div class="col-12">
-                    <textarea id="message" name="message" placeholder="YOUR MESSAGE" required oninput="validateForm()"></textarea>
-                    <small id="message_error" class="text-danger"></small> <!-- Error message for message -->
-                    <button type="submit" class="btn btn-contact" id="submit_button">Send Message</button>
-                </div>
-            </div>
-        </div>
-    </form>
-</div>
-<!-- Contact Form Ends -->
-
-<script>
-    function validateForm() {
         var name = document.getElementById('name').value.trim();
         var email = document.getElementById('email').value.trim();
         var contact = document.getElementById('contact').value.trim();
@@ -297,9 +258,42 @@
             valid = false;
         }
 
-        return valid; // Only submit if all validations pass
-    }
-</script>
+        if (!valid) {
+            return false; // Prevent form submission if validation fails
+        }
+
+        alert('🎉Thank you for reaching out! 📩 Your message has been received, and I\'ll get back to you as soon as possible.😊');
+        setTimeout(function() {
+            window.location.reload(); // Reloads the page after a short delay
+        }, 100); 
+        return false; // Prevent form submission
+    ">
+
+        <div class="contactform">
+            <input type="hidden" name="access_key" value="90b38764-9d0f-4674-ae4b-2501b40ecd9f">
+            <div class="row">
+                <div class="col-12 col-md-4">
+                    <input type="text" id="name" name="name" placeholder="YOUR NAME" required>
+                    <small id="name_error" class="text-danger"></small>
+                </div>
+                <div class="col-12 col-md-4">
+                    <input type="email" id="email" name="email" placeholder="YOUR EMAIL" required>
+                    <small id="email_error" class="text-danger"></small>
+                </div>
+                <div class="col-12 col-md-4">
+                    <input type="text" id="contact" name="contact" placeholder="YOUR CONTACT NUMBER" required>
+                    <small id="contact_error" class="text-danger"></small>
+                </div>
+                <div class="col-12">
+                    <textarea id="message" name="message" placeholder="YOUR MESSAGE" required></textarea>
+                    <small id="message_error" class="text-danger"></small>
+                    <button type="submit" class="btn btn-contact" id="submit_button">Send Message</button>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
+<!-- Contact Form Ends -->
 
 
 
