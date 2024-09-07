@@ -202,15 +202,16 @@
         (function() {
             var name = document.getElementById('name').value.trim();
             var email = document.getElementById('email').value.trim();
-            var contact = document.getElementById('contact').value.trim();
+            var countryCode = document.getElementById('country_code').value.trim();
+            var phoneNumber = document.getElementById('phone_number').value.trim();
             var message = document.getElementById('message').value.trim();
             var outputMessage = document.getElementById('output_message');
             var emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
             var emailValid = emailPattern.test(email);
-            var contactPattern = /^[0-9]+$/;
-            var contactValid = contactPattern.test(contact);
+            var contactPattern = /^\d{4,}$/; // Basic validation for phone numbers
+            var contactValid = contactPattern.test(phoneNumber);
 
-            if (name === '' || email === '' || contact === '' || message === '') {
+            if (name === '' || email === '' || countryCode === '' || phoneNumber === '' || message === '') {
                 outputMessage.innerText = 'All fields are required!';
                 return false; // Prevent form submission
             }
@@ -221,7 +222,7 @@
             }
 
             if (!contactValid) {
-                outputMessage.innerText = 'Please enter a valid contact number!';
+                outputMessage.innerText = 'Please enter a valid phone number!';
                 return false; // Prevent form submission
             }
 
@@ -239,29 +240,185 @@
             <div class="row">
                 <div class="col-12 col-md-4">
                     <input type="text" id="name" name="name" placeholder="YOUR NAME" required oninput="
-                        validateForm()">
+                        (function() {
+                            var name = document.getElementById('name').value.trim();
+                            var email = document.getElementById('email').value.trim();
+                            var countryCode = document.getElementById('country_code').value.trim();
+                            var phoneNumber = document.getElementById('phone_number').value.trim();
+                            var message = document.getElementById('message').value.trim();
+                            var outputMessage = document.getElementById('output_message');
+                            var emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+                            var emailValid = emailPattern.test(email);
+                            var contactPattern = /^\d{4,}$/;
+                            var contactValid = contactPattern.test(phoneNumber);
+
+                            if (name === '' || email === '' || countryCode === '' || phoneNumber === '' || message === '') {
+                                outputMessage.innerText = 'All fields are required!';
+                                return false;
+                            }
+
+                            if (!emailValid) {
+                                outputMessage.innerText = 'Please enter a valid email address!';
+                                return false;
+                            }
+
+                            if (!contactValid) {
+                                outputMessage.innerText = 'Please enter a valid phone number!';
+                                return false;
+                            }
+
+                            outputMessage.innerText = ''; // Clear any previous error message
+                            return true;
+                        })()">
                 </div>
                 <div class="col-12 col-md-4">
                     <input type="email" id="email" name="email" placeholder="YOUR EMAIL" required oninput="
-                        validateForm()">
+                        (function() {
+                            var name = document.getElementById('name').value.trim();
+                            var email = document.getElementById('email').value.trim();
+                            var countryCode = document.getElementById('country_code').value.trim();
+                            var phoneNumber = document.getElementById('phone_number').value.trim();
+                            var message = document.getElementById('message').value.trim();
+                            var outputMessage = document.getElementById('output_message');
+                            var emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+                            var emailValid = emailPattern.test(email);
+                            var contactPattern = /^\d{4,}$/;
+                            var contactValid = contactPattern.test(phoneNumber);
+
+                            if (name === '' || email === '' || countryCode === '' || phoneNumber === '' || message === '') {
+                                outputMessage.innerText = 'All fields are required!';
+                                return false;
+                            }
+
+                            if (!emailValid) {
+                                outputMessage.innerText = 'Please enter a valid email address!';
+                                return false;
+                            }
+
+                            if (!contactValid) {
+                                outputMessage.innerText = 'Please enter a valid phone number!';
+                                return false;
+                            }
+
+                            outputMessage.innerText = ''; // Clear any previous error message
+                            return true;
+                        })()">
                 </div>
                 <div class="col-12 col-md-4">
-                    <input type="text" id="contact" name="contact" placeholder="YOUR CONTACT NUMBER" required oninput="
-                        validateForm()">
+                    <select id="country_code" name="country_code" required onchange="
+                        (function() {
+                            var name = document.getElementById('name').value.trim();
+                            var email = document.getElementById('email').value.trim();
+                            var countryCode = document.getElementById('country_code').value.trim();
+                            var phoneNumber = document.getElementById('phone_number').value.trim();
+                            var message = document.getElementById('message').value.trim();
+                            var outputMessage = document.getElementById('output_message');
+                            var emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+                            var emailValid = emailPattern.test(email);
+                            var contactPattern = /^\d{4,}$/;
+                            var contactValid = contactPattern.test(phoneNumber);
+
+                            if (name === '' || email === '' || countryCode === '' || phoneNumber === '' || message === '') {
+                                outputMessage.innerText = 'All fields are required!';
+                                return false;
+                            }
+
+                            if (!emailValid) {
+                                outputMessage.innerText = 'Please enter a valid email address!';
+                                return false;
+                            }
+
+                            if (!contactValid) {
+                                outputMessage.innerText = 'Please enter a valid phone number!';
+                                return false;
+                            }
+
+                            outputMessage.innerText = ''; // Clear any previous error message
+                            return true;
+                        })()">
+                        <option value="" disabled selected>Select Country Code</option>
+                        <option value="+1">+1 (USA)</option>
+                        <option value="+44">+44 (UK)</option>
+                        <option value="+91">+91 (India)</option>
+                        <!-- Add more options as needed -->
+                    </select>
+                    <input type="text" id="phone_number" name="phone_number" placeholder="YOUR PHONE NUMBER" required oninput="
+                        (function() {
+                            var name = document.getElementById('name').value.trim();
+                            var email = document.getElementById('email').value.trim();
+                            var countryCode = document.getElementById('country_code').value.trim();
+                            var phoneNumber = document.getElementById('phone_number').value.trim();
+                            var message = document.getElementById('message').value.trim();
+                            var outputMessage = document.getElementById('output_message');
+                            var emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+                            var emailValid = emailPattern.test(email);
+                            var contactPattern = /^\d{4,}$/;
+                            var contactValid = contactPattern.test(phoneNumber);
+
+                            if (name === '' || email === '' || countryCode === '' || phoneNumber === '' || message === '') {
+                                outputMessage.innerText = 'All fields are required!';
+                                return false;
+                            }
+
+                            if (!emailValid) {
+                                outputMessage.innerText = 'Please enter a valid email address!';
+                                return false;
+                            }
+
+                            if (!contactValid) {
+                                outputMessage.innerText = 'Please enter a valid phone number!';
+                                return false;
+                            }
+
+                            outputMessage.innerText = ''; // Clear any previous error message
+                            return true;
+                        })()">
                 </div>
                 <div class="col-12">
                     <textarea id="message" name="message" placeholder="YOUR MESSAGE" required oninput="
-                        validateForm()"></textarea>
-                    <button type="submit" class="btn btn-contact" id="submit_button">Send Message</button>
+                        (function() {
+                            var name = document.getElementById('name').value.trim();
+                            var email = document.getElementById('email').value.trim();
+                            var countryCode = document.getElementById('country_code').value.trim();
+                            var phoneNumber = document.getElementById('phone_number').value.trim();
+                            var message = document.getElementById('message').value.trim();
+                            var outputMessage = document.getElementById('output_message');
+                            var emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+                            var emailValid = emailPattern.test(email);
+                            var contactPattern = /^\d{4,}$/;
+                            var contactValid = contactPattern.test(phoneNumber);
+
+                            if (name === '' || email === '' || countryCode === '' || phoneNumber === '' || message === '') {
+                                outputMessage.innerText = 'All fields are required!';
+                                return false;
+                            }
+
+                            if (!emailValid) {
+                                outputMessage.innerText = 'Please enter a valid email address!';
+                                return false;
+                            }
+
+                            if (!contactValid) {
+                                outputMessage.innerText = 'Please enter a valid phone number!';
+                                return false;
+                            }
+
+                            outputMessage.innerText = ''; // Clear any previous error message
+                            return true;
+                        })()">
                 </div>
                 <div class="col-12 form-message">
                     <span id="output_message" class="output_message text-center font-weight-600 text-uppercase"></span>
+                </div>
+                <div class="col-12">
+                    <button type="submit" class="btn btn-contact">Send Message</button>
                 </div>
             </div>
         </div>
     </form>
 </div>
 <!-- Contact Form Ends -->
+
 
 
 
