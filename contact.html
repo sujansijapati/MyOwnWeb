@@ -190,56 +190,194 @@
 
 <!-- Contact Form Starts -->
 <div class="col-12 col-lg-8">
-    <form class="contactform" action="https://api.web3forms.com/submit" method="POST" onsubmit="return (function() {
-        // Clear any previous messages
-        var outputMessage = document.getElementById('output_message');
-        outputMessage.innerText = '';
+    <form class="contactform" action="https://api.web3forms.com/submit" method="POST" onsubmit="
+        (function() {
+            var name = document.getElementById('name').value.trim();
+            var email = document.getElementById('email').value.trim();
+            var contact = document.getElementById('contact').value.trim();
+            var message = document.getElementById('message').value.trim();
+            var outputMessage = document.getElementById('output_message');
+            var submitButton = document.getElementById('submit_button');
 
-        // Get form values
-        var name = document.getElementById('name').value.trim();
-        var email = document.getElementById('email').value.trim();
-        var contact = document.getElementById('contact').value.trim();
-        var message = document.getElementById('message').value.trim();
+            var emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            var emailValid = emailPattern.test(email);
+            var contactPattern = /^[0-9]+$/;
+            var contactValid = contactPattern.test(contact);
 
-        // Validate fields
-        if (name === '' || email === '' || contact === '' || message === '') {
-            outputMessage.innerText = 'All fields are required!';
-            return false;
-        }
+            if (name === '' || email === '' || contact === '' || message === '') {
+                outputMessage.innerText = 'All fields are required!';
+                submitButton.disabled = true;
+                return false; // Prevent form submission
+            }
 
-        // Validate email
-        var emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-        if (!emailPattern.test(email)) {
-            outputMessage.innerText = 'Please enter a valid email address!';
-            return false;
-        }
+            if (!emailValid) {
+                outputMessage.innerText = 'Please enter a valid email address!';
+                submitButton.disabled = true;
+                return false; // Prevent form submission
+            }
 
-        // Validate contact number (example: simple numeric check, adjust as needed)
-        var contactPattern = /^[0-9]+$/;
-        if (!contactPattern.test(contact)) {
-            outputMessage.innerText = 'Please enter a valid contact number!';
-            return false;
-        }
+            if (!contactValid) {
+                outputMessage.innerText = 'Please enter a valid contact number!';
+                submitButton.disabled = true;
+                return false; // Prevent form submission
+            }
 
-        // If all validations pass, show success message
-        outputMessage.innerText = 'Thank You for reaching out! I\'ve received the message and will get back to you as soon as possible.';
-        return true;
-    })()">
+            outputMessage.innerText = 'Thank You for reaching out! I\'ve received the message and will get back to you as soon as possible.';
+            submitButton.disabled = false; // Ensure the button is enabled if validation passes
+            return true; // Allow form submission
+        })(); return false;">
+
         <div class="contactform">
             <input type="hidden" name="access_key" value="90b38764-9d0f-4674-ae4b-2501b40ecd9f">
             <div class="row">
                 <div class="col-12 col-md-4">
-                    <input type="text" id="name" name="name" placeholder="YOUR NAME" required>
+                    <input type="text" id="name" name="name" placeholder="YOUR NAME" required oninput="
+                        (function() {
+                            var name = document.getElementById('name').value.trim();
+                            var email = document.getElementById('email').value.trim();
+                            var contact = document.getElementById('contact').value.trim();
+                            var message = document.getElementById('message').value.trim();
+                            var outputMessage = document.getElementById('output_message');
+                            var submitButton = document.getElementById('submit_button');
+
+                            var emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+                            var emailValid = emailPattern.test(email);
+                            var contactPattern = /^[0-9]+$/;
+                            var contactValid = contactPattern.test(contact);
+
+                            if (name === '' || email === '' || contact === '' || message === '') {
+                                outputMessage.innerText = 'All fields are required!';
+                                submitButton.disabled = true;
+                                return false;
+                            }
+
+                            if (!emailValid) {
+                                outputMessage.innerText = 'Please enter a valid email address!';
+                                submitButton.disabled = true;
+                                return false;
+                            }
+
+                            if (!contactValid) {
+                                outputMessage.innerText = 'Please enter a valid contact number!';
+                                submitButton.disabled = true;
+                                return false;
+                            }
+
+                            outputMessage.innerText = '';
+                            submitButton.disabled = false;
+                        })()">
                 </div>
                 <div class="col-12 col-md-4">
-                    <input type="email" id="email" name="email" placeholder="YOUR EMAIL" required>
+                    <input type="email" id="email" name="email" placeholder="YOUR EMAIL" required oninput="
+                        (function() {
+                            var name = document.getElementById('name').value.trim();
+                            var email = document.getElementById('email').value.trim();
+                            var contact = document.getElementById('contact').value.trim();
+                            var message = document.getElementById('message').value.trim();
+                            var outputMessage = document.getElementById('output_message');
+                            var submitButton = document.getElementById('submit_button');
+
+                            var emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+                            var emailValid = emailPattern.test(email);
+                            var contactPattern = /^[0-9]+$/;
+                            var contactValid = contactPattern.test(contact);
+
+                            if (name === '' || email === '' || contact === '' || message === '') {
+                                outputMessage.innerText = 'All fields are required!';
+                                submitButton.disabled = true;
+                                return false;
+                            }
+
+                            if (!emailValid) {
+                                outputMessage.innerText = 'Please enter a valid email address!';
+                                submitButton.disabled = true;
+                                return false;
+                            }
+
+                            if (!contactValid) {
+                                outputMessage.innerText = 'Please enter a valid contact number!';
+                                submitButton.disabled = true;
+                                return false;
+                            }
+
+                            outputMessage.innerText = '';
+                            submitButton.disabled = false;
+                        })()">
                 </div>
                 <div class="col-12 col-md-4">
-                    <input type="text" id="contact" name="contact" placeholder="YOUR CONTACT NUMBER" required>
+                    <input type="text" id="contact" name="contact" placeholder="YOUR CONTACT NUMBER" required oninput="
+                        (function() {
+                            var name = document.getElementById('name').value.trim();
+                            var email = document.getElementById('email').value.trim();
+                            var contact = document.getElementById('contact').value.trim();
+                            var message = document.getElementById('message').value.trim();
+                            var outputMessage = document.getElementById('output_message');
+                            var submitButton = document.getElementById('submit_button');
+
+                            var emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+                            var emailValid = emailPattern.test(email);
+                            var contactPattern = /^[0-9]+$/;
+                            var contactValid = contactPattern.test(contact);
+
+                            if (name === '' || email === '' || contact === '' || message === '') {
+                                outputMessage.innerText = 'All fields are required!';
+                                submitButton.disabled = true;
+                                return false;
+                            }
+
+                            if (!emailValid) {
+                                outputMessage.innerText = 'Please enter a valid email address!';
+                                submitButton.disabled = true;
+                                return false;
+                            }
+
+                            if (!contactValid) {
+                                outputMessage.innerText = 'Please enter a valid contact number!';
+                                submitButton.disabled = true;
+                                return false;
+                            }
+
+                            outputMessage.innerText = '';
+                            submitButton.disabled = false;
+                        })()">
                 </div>
                 <div class="col-12">
-                    <textarea id="message" name="message" placeholder="YOUR MESSAGE" required></textarea>
-                    <button type="submit" class="btn btn-contact">Send Message</button>
+                    <textarea id="message" name="message" placeholder="YOUR MESSAGE" required oninput="
+                        (function() {
+                            var name = document.getElementById('name').value.trim();
+                            var email = document.getElementById('email').value.trim();
+                            var contact = document.getElementById('contact').value.trim();
+                            var message = document.getElementById('message').value.trim();
+                            var outputMessage = document.getElementById('output_message');
+                            var submitButton = document.getElementById('submit_button');
+
+                            var emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+                            var emailValid = emailPattern.test(email);
+                            var contactPattern = /^[0-9]+$/;
+                            var contactValid = contactPattern.test(contact);
+
+                            if (name === '' || email === '' || contact === '' || message === '') {
+                                outputMessage.innerText = 'All fields are required!';
+                                submitButton.disabled = true;
+                                return false;
+                            }
+
+                            if (!emailValid) {
+                                outputMessage.innerText = 'Please enter a valid email address!';
+                                submitButton.disabled = true;
+                                return false;
+                            }
+
+                            if (!contactValid) {
+                                outputMessage.innerText = 'Please enter a valid contact number!';
+                                submitButton.disabled = true;
+                                return false;
+                            }
+
+                            outputMessage.innerText = '';
+                            submitButton.disabled = false;
+                        })()"></textarea>
+                    <button type="submit" class="btn btn-contact" id="submit_button" disabled>Send Message</button>
                 </div>
                 <div class="col-12 form-message">
                     <span id="output_message" class="output_message text-center font-weight-600 text-uppercase"></span>
@@ -249,6 +387,7 @@
     </form>
 </div>
 <!-- Contact Form Ends -->
+
 
 
 
