@@ -192,9 +192,13 @@
 
 
 
-<b></b>
 
 
+
+
+
+
+            
 
 <!-- Contact Form Starts -->
 <div class="col-12 col-lg-8">
@@ -214,19 +218,20 @@
             <div class="row">
                 <div class="col-12 col-md-4">
                     <input type="text" id="name" name="name" placeholder="YOUR NAME" required oninput="validateForm()">
+                    <small id="name_error" class="text-danger"></small> <!-- Error message for name -->
                 </div>
                 <div class="col-12 col-md-4">
                     <input type="email" id="email" name="email" placeholder="YOUR EMAIL" required oninput="validateForm()">
+                    <small id="email_error" class="text-danger"></small> <!-- Error message for email -->
                 </div>
                 <div class="col-12 col-md-4">
                     <input type="text" id="contact" name="contact" placeholder="YOUR CONTACT NUMBER" required oninput="validateForm()">
+                    <small id="contact_error" class="text-danger"></small> <!-- Error message for contact -->
                 </div>
                 <div class="col-12">
                     <textarea id="message" name="message" placeholder="YOUR MESSAGE" required oninput="validateForm()"></textarea>
+                    <small id="message_error" class="text-danger"></small> <!-- Error message for message -->
                     <button type="submit" class="btn btn-contact" id="submit_button">Send Message</button>
-                </div>
-                <div class="col-12 form-message">
-                    <span id="output_message" class="output_message text-center font-weight-600 text-uppercase"></span>
                 </div>
             </div>
         </div>
@@ -240,33 +245,59 @@
         var email = document.getElementById('email').value.trim();
         var contact = document.getElementById('contact').value.trim();
         var message = document.getElementById('message').value.trim();
-        var outputMessage = document.getElementById('output_message');
         var emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
         var contactPattern = /^[0-9]{10}$/; // Contact must be exactly 10 digits
+        var namePattern = /^[A-Za-z\s]+$/; // Name should only contain alphabets and spaces
         var emailValid = emailPattern.test(email);
         var contactValid = contactPattern.test(contact);
+        var nameValid = namePattern.test(name);
 
-        if (name === '' || email === '' || contact === '' || message === '') {
-            outputMessage.innerText = 'All fields are required!';
-            return false;
+        // Clear previous error messages
+        document.getElementById('name_error').innerText = '';
+        document.getElementById('email_error').innerText = '';
+        document.getElementById('contact_error').innerText = '';
+        document.getElementById('message_error').innerText = '';
+
+        var valid = true; // Flag to track overall form validity
+
+        // Name validation
+        if (name === '') {
+            document.getElementById('name_error').innerText = 'Name is required!';
+            valid = false;
+        } else if (!nameValid) {
+            document.getElementById('name_error').innerText = 'Please enter a valid name. Numbers are not allowed!';
+            valid = false;
         }
 
-        if (!emailValid) {
-            outputMessage.innerText = 'Please enter a valid email address!';
-            return false;
+        // Email validation
+        if (email === '') {
+            document.getElementById('email_error').innerText = 'Email is required!';
+            valid = false;
+        } else if (!emailValid) {
+            document.getElementById('email_error').innerText = 'Please enter a valid email address!';
+            valid = false;
         }
 
-        if (!contactValid) {
+        // Contact validation
+        if (contact === '') {
+            document.getElementById('contact_error').innerText = 'Contact number is required!';
+            valid = false;
+        } else if (!contactValid) {
             if (/[^0-9]/.test(contact)) {
-                outputMessage.innerText = 'Contact number should only contain digits!';
+                document.getElementById('contact_error').innerText = 'Please enter a valid number. Alphabetic letters are not allowed!';
             } else {
-                outputMessage.innerText = 'Please enter a valid 10-digit contact number!';
+                document.getElementById('contact_error').innerText = 'Please enter a valid 10-digit contact number!';
             }
-            return false;
+            valid = false;
         }
 
-        outputMessage.innerText = ''; // Clear any previous error message
-        return true;
+        // Message validation
+        if (message === '') {
+            document.getElementById('message_error').innerText = 'Message is required!';
+            valid = false;
+        }
+
+        return valid; // Only submit if all validations pass
     }
 </script>
 
