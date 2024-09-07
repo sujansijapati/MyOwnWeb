@@ -193,7 +193,10 @@
 
 
 
-            <!-- Contact Form Starts -->
+
+
+
+<!-- Contact Form Starts -->
 <div class="col-12 col-lg-8">
     <form class="contactform" action="https://api.web3forms.com/submit" method="POST" onsubmit="
         (function() {
@@ -202,8 +205,6 @@
             var contact = document.getElementById('contact').value.trim();
             var message = document.getElementById('message').value.trim();
             var outputMessage = document.getElementById('output_message');
-            var submitButton = document.getElementById('submit_button');
-
             var emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
             var emailValid = emailPattern.test(email);
             var contactPattern = /^[0-9]+$/;
@@ -211,29 +212,26 @@
 
             if (name === '' || email === '' || contact === '' || message === '') {
                 outputMessage.innerText = 'All fields are required!';
-                submitButton.disabled = true; // Disable button to prevent form submission
                 return false; // Prevent form submission
             }
 
             if (!emailValid) {
                 outputMessage.innerText = 'Please enter a valid email address!';
-                submitButton.disabled = true; // Disable button to prevent form submission
                 return false; // Prevent form submission
             }
 
             if (!contactValid) {
                 outputMessage.innerText = 'Please enter a valid contact number!';
-                submitButton.disabled = true; // Disable button to prevent form submission
                 return false; // Prevent form submission
             }
 
-            outputMessage.innerText = 'Thank You for reaching out! I\'ve received the message and will get back to you as soon as possible.';
-            // To refresh the page after showing the success message
+            // Success message and page reload
+            alert('Thank You for reaching out! I\'ve received the message and will get back to you as soon as possible.');
             setTimeout(function() {
                 window.location.reload();
-            }, 3000); // Refresh after 3 seconds
+            }, 100); // Refresh after a short delay
 
-            return true; // Allow form submission
+            return false; // Prevent form submission
         })(); return false;">
 
         <div class="contactform">
@@ -241,151 +239,19 @@
             <div class="row">
                 <div class="col-12 col-md-4">
                     <input type="text" id="name" name="name" placeholder="YOUR NAME" required oninput="
-                        (function() {
-                            var name = document.getElementById('name').value.trim();
-                            var email = document.getElementById('email').value.trim();
-                            var contact = document.getElementById('contact').value.trim();
-                            var message = document.getElementById('message').value.trim();
-                            var outputMessage = document.getElementById('output_message');
-                            var submitButton = document.getElementById('submit_button');
-
-                            var emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-                            var emailValid = emailPattern.test(email);
-                            var contactPattern = /^[0-9]+$/;
-                            var contactValid = contactPattern.test(contact);
-
-                            if (name === '' || email === '' || contact === '' || message === '') {
-                                outputMessage.innerText = 'All fields are required!';
-                                submitButton.disabled = true;
-                                return false;
-                            }
-
-                            if (!emailValid) {
-                                outputMessage.innerText = 'Please enter a valid email address!';
-                                submitButton.disabled = true;
-                                return false;
-                            }
-
-                            if (!contactValid) {
-                                outputMessage.innerText = 'Please enter a valid contact number!';
-                                submitButton.disabled = true;
-                                return false;
-                            }
-
-                            outputMessage.innerText = '';
-                            submitButton.disabled = false;
-                        })()">
+                        validateForm()">
                 </div>
                 <div class="col-12 col-md-4">
                     <input type="email" id="email" name="email" placeholder="YOUR EMAIL" required oninput="
-                        (function() {
-                            var name = document.getElementById('name').value.trim();
-                            var email = document.getElementById('email').value.trim();
-                            var contact = document.getElementById('contact').value.trim();
-                            var message = document.getElementById('message').value.trim();
-                            var outputMessage = document.getElementById('output_message');
-                            var submitButton = document.getElementById('submit_button');
-
-                            var emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-                            var emailValid = emailPattern.test(email);
-                            var contactPattern = /^[0-9]+$/;
-                            var contactValid = contactPattern.test(contact);
-
-                            if (name === '' || email === '' || contact === '' || message === '') {
-                                outputMessage.innerText = 'All fields are required!';
-                                submitButton.disabled = true;
-                                return false;
-                            }
-
-                            if (!emailValid) {
-                                outputMessage.innerText = 'Please enter a valid email address!';
-                                submitButton.disabled = true;
-                                return false;
-                            }
-
-                            if (!contactValid) {
-                                outputMessage.innerText = 'Please enter a valid contact number!';
-                                submitButton.disabled = true;
-                                return false;
-                            }
-
-                            outputMessage.innerText = '';
-                            submitButton.disabled = false;
-                        })()">
+                        validateForm()">
                 </div>
                 <div class="col-12 col-md-4">
                     <input type="text" id="contact" name="contact" placeholder="YOUR CONTACT NUMBER" required oninput="
-                        (function() {
-                            var name = document.getElementById('name').value.trim();
-                            var email = document.getElementById('email').value.trim();
-                            var contact = document.getElementById('contact').value.trim();
-                            var message = document.getElementById('message').value.trim();
-                            var outputMessage = document.getElementById('output_message');
-                            var submitButton = document.getElementById('submit_button');
-
-                            var emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-                            var emailValid = emailPattern.test(email);
-                            var contactPattern = /^[0-9]+$/;
-                            var contactValid = contactPattern.test(contact);
-
-                            if (name === '' || email === '' || contact === '' || message === '') {
-                                outputMessage.innerText = 'All fields are required!';
-                                submitButton.disabled = true;
-                                return false;
-                            }
-
-                            if (!emailValid) {
-                                outputMessage.innerText = 'Please enter a valid email address!';
-                                submitButton.disabled = true;
-                                return false;
-                            }
-
-                            if (!contactValid) {
-                                outputMessage.innerText = 'Please enter a valid contact number!';
-                                submitButton.disabled = true;
-                                return false;
-                            }
-
-                            outputMessage.innerText = '';
-                            submitButton.disabled = false;
-                        })()">
+                        validateForm()">
                 </div>
                 <div class="col-12">
                     <textarea id="message" name="message" placeholder="YOUR MESSAGE" required oninput="
-                        (function() {
-                            var name = document.getElementById('name').value.trim();
-                            var email = document.getElementById('email').value.trim();
-                            var contact = document.getElementById('contact').value.trim();
-                            var message = document.getElementById('message').value.trim();
-                            var outputMessage = document.getElementById('output_message');
-                            var submitButton = document.getElementById('submit_button');
-
-                            var emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-                            var emailValid = emailPattern.test(email);
-                            var contactPattern = /^[0-9]+$/;
-                            var contactValid = contactPattern.test(contact);
-
-                            if (name === '' || email === '' || contact === '' || message === '') {
-                                outputMessage.innerText = 'All fields are required!';
-                                submitButton.disabled = true;
-                                return false;
-                            }
-
-                            if (!emailValid) {
-                                outputMessage.innerText = 'Please enter a valid email address!';
-                                submitButton.disabled = true;
-                                return false;
-                            }
-
-                            if (!contactValid) {
-                                outputMessage.innerText = 'Please enter a valid contact number!';
-                                submitButton.disabled = true;
-                                return false;
-                            }
-
-                            outputMessage.innerText = '';
-                            submitButton.disabled = false;
-                        })()"></textarea>
+                        validateForm()"></textarea>
                     <button type="submit" class="btn btn-contact" id="submit_button">Send Message</button>
                 </div>
                 <div class="col-12 form-message">
@@ -396,6 +262,49 @@
     </form>
 </div>
 <!-- Contact Form Ends -->
+
+
+
+
+
+
+
+
+
+
+
+
+<script>
+    function validateForm() {
+        var name = document.getElementById('name').value.trim();
+        var email = document.getElementById('email').value.trim();
+        var contact = document.getElementById('contact').value.trim();
+        var message = document.getElementById('message').value.trim();
+        var outputMessage = document.getElementById('output_message');
+        var emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        var emailValid = emailPattern.test(email);
+        var contactPattern = /^[0-9]+$/;
+        var contactValid = contactPattern.test(contact);
+
+        if (name === '' || email === '' || contact === '' || message === '') {
+            outputMessage.innerText = 'All fields are required!';
+            return false;
+        }
+
+        if (!emailValid) {
+            outputMessage.innerText = 'Please enter a valid email address!';
+            return false;
+        }
+
+        if (!contactValid) {
+            outputMessage.innerText = 'Please enter a valid contact number!';
+            return false;
+        }
+
+        outputMessage.innerText = ''; // Clear any previous error message
+        return true;
+    }
+</script>
 
 
 
